@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer {
+    .aqi-1{ @apply 
+        bg-lime-400;
+    }
+    
+    .aqi-2{ @apply 
+        bg-lime-900;
+    }
+    
+    .aqi-3{@apply 
+        bg-red-400;
+    }
+    .aqi-4{@apply 
+        bg-red-700;
+    }
+    .aqi-5{@apply 
+        bg-red-950;
+    }
+    .card-item{
+        @apply
+        flex
+        justify-evenly;
+    }
+}

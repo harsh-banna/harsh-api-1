@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eb910faf97.js" crossorigin="anonymous"></script>
+</head>
+<body class =" bg-blue-400
+text-#f9fafb
+font-sans ">
+    <div class="container" >
+        <div class="header sticky flex justify-between items-center m-3 py-4 px-0 h-15 w-full">
+            <h2 class="text-4xl">WEATHER app</h2>
+            <div class="weather-input">
+                <input type="text" name="city" id="city_input" class="bg-slate-600 border-none p-3 text-base rounded-3xl text-white focus:outline-none " placeholder="enter city name">
+                <!-- <div class="list-group" id="history">
+                    <select name="form-select" onchange="serach" id="">
+                    <option value="ajmeer">ajmer</option>
+                    </select>
+                </div> -->
+                <button type="button" id="searchBtn" class="border-none text-base p-3 rounded-3xl bg-white cursor-pointer ">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button type="button" id="locationBtn" class="border-none text-base p-3 rounded-3xl bg-violet-600 cursor-pointer ">
+                    <i class="fa-solid fa-location-crosshairs"></i>current location
+                </button>
+            </div>
+        </div>
+        <div class="weather-data grid grid-flow-col grid-cols-2 xl:flex flex-row">
+            <!-- grid grid-rows-3 gap-3 -->
+            <div class="weather-left ">
+                <!-- col-span-1 -->
+                <div class="card bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-2xl mb-3.5 ">
+                    <!-- bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-2xl mb-3.5 -->
+                    <div class="current-weather col-span-1 ">
+                        <!-- flex justify-between items-center -->
+                        <div class="details">
+                            <p class="text-sm">Now</p>
+                            <h2 class="text-3xl font-medium my-1.5">__&deg;</h2>
+                            <p class="text-sm text-white">____</p>
+                        </div>
+                        <div class="weather-icon">
+                            <img src="https://www.svgrepo.com/show/276664/cloudy-day-weather.svg" width="60px" alt="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-footer ">
+                        <p ><i class="fa-regular fa-calendar"></i>____</p>
+                        <p ><i class="fa-solid fa-location-dot"></i>______</p>
+                    </div>
+                </div>
+                <div class="card xl:flex flex-row">
+                    <h2 class="text-3xl font-medium">5 Days Forecast</h2>
+                    <div class="day-forecast grid grid-cols-2 items-center m-4 gap-2 xl:grid-cols-1 ">
+                        <!-- grid grid-cols-3 items-center mb-4 -->
+                        <div class="forecast-item ">
+                            <div class="icon-wrapper ">
+                                <!-- flex items-center -->
+                                <img src="https://www.accuweather.com/images/weathericons/03.svg" width="40px"  alt="">
+                                <span>___&deg;c</span>
+                            </div>
+                            <p >___</p>
+                            <!-- class="text-sm text-slate-100" -->
+                            <p >___</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- grid grid-cols-1 -->
+            <div class="weather-right bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-2xl  grid grid-cols-6 items-center mx-2 gap-2">
+                <h2 class="col-span-6 text-center">Today's highlights</h2>
+                <div class="highlights col-span-6">
+                    <div class="card justify-between">
+                        <!-- flex justify-between mb-2.5 -->
+                        <div class="card-head ">
+                            <p>air quality index</p>
+                            <!-- py-1 px-2.5 rounded-2xl -->
+                            <p class="air-index aqi-1 text-black py-1 px-2.5 rounded-2xl">good</p>
+                        </div>
+                        <!-- grid grid-cols-4 items-center -->
+                        <div class="air-indices items-center gap-4 grid grid-cols-4 ">
+                            <i class="fa-solid fa-wind"></i>
+                            <div class="item ">
+                                <p class="text-center">pm2.5</p>
+                                <h2 class="">___</h2>
+                                <!-- mt-3.5 -->
+                            </div>
+                            <div class="item ">
+                                <p class="text-center">pm10</p>
+                                <h2>___</h2>
+                            </div>
+                            <div class="item ">
+                                <p class="text-center">502</p>
+                                <h2>___</h2>
+                            </div>
+                            <div class="item ">
+                                <p class="text-center">co</p>
+                                <h2>___</h2>
+                            </div>
+                            <div class="item ">
+                                <p class="text-center">no</p>
+                                <h2>___</h2>
+                            </div>
+                            <div class="item ">
+                                <p>no2</p>
+                                <h2>___</h2>
+                            </div>
+                            <div class="item ">
+                                <p class="text-center">nnh3</p>
+                                <h2>___</h2>
+                            </div>
+                            <!-- flex items-center gap-2.5 m-1 -->
+                            <div class="item ">         
+                                <p class="text-center">o3</p>
+                                <h2>___</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
+                        <div class="card-head">
+                            <p>sunrise & sunset</p>
+                        </div>
+                        <div class="sunrise-sunset">
+                            <div class="item">
+                            <div class="icon"><i class="fa-thin fa-sunrise fa-4x"></i></div>
+                            </div>
+                            <div>
+                                <p>sunrise</p>
+                                <h2>___</h2>
+                            </div>    
+                        <div>
+                                <div class="item">
+                                    <div class="icon"><i class="fa-thin fa-sunrise fa-4x"></i></div>
+                                </div>
+                                <div>
+                                <p>sunset</p>
+                                <h2>____</h2>
+                                </div>
+                        
+                        </div>
+                    </div> -->
+                    
+                </div>
+                <div class="card col-span-2">
+                    <div class="card-head">
+                        <p>humidity</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-droplet fa-2x"></i>
+                        <h2 id="humidityval">____%</h2>
+                    </div>
+                </div>
+                <div class="card col-span-2">
+                    <div class="card-head">
+                        <p>pressure</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-regular fa-compass fa-2x"></i>
+                        <h2 id="pressureval">____hpa</h2>
+                    </div>
+                </div>
+                <div class="card col-span-2">
+                    <div class="card-head">
+                        <p>visibility</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-eye fa-2x"></i>
+                        <h2 id="visibilityval">____km</h2>
+                    </div>
+                </div>
+                <div class="card col-span-3">
+                    <div class="card-head">
+                        <p>wind speed</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-location-arrow fa-2x"></i>
+                        <h2 id="windSpeedval">____m/s</h2>
+                    </div>
+                </div>
+                <div class="card col-span-3">
+                    <div class="card-head">
+                        <p>feels like</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-temperature-three-quarters fa-2x"></i>
+                        <h2 id="feelsval">____&deg;c</h2>
+                    </div>
+                </div>
+            </div>
+            <h2 class="grid  grid-flow-row gap-5">today at</h2>
+            <!-- grid grid-cols-8 gap-5 -->
+            <div class="hourly-forecast grid grid-cols-8 gap-3">       
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+                <div class="card text-center">
+                    <p>9am</p>
+                    <img src="https://www.svgrepo.com/show/528172/cloud-sun-2.svg" width="24" alt="">
+                    <p>____&deg;c</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
