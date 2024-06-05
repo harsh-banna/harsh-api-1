@@ -47,43 +47,50 @@ function getWeatherDetails(name, lat, lon, country, state){
     fetch(AIR_POLU_API_URL).then(res => res.json()).then(data => {
         let {co, no, no2, o3, so2, pm2_5, pm10, nh3} = data.list[0].components;
         aqiCard.innerHTML =`
-        <div class="card-head flex justify-between mb-2.5">
-            <p class="text-sm">air quality index</p>
-            <p class="air-index aqi-${data.list[0].main.aqi}  text-black py-1 px-2.5 rounded-2xl text-sm">${aqilist[data.list[0].main.aqi - 1]}</p>
+        <div class="card-head flex justify-between sm:item-center mb-6 sm:m-4 sm:flex-col sm:gap-6 sm:justify-center">
+            <p class="text-xl text-center">air quality index---></p>
+            
+            <p class="air-index aqi-${data.list[0].main.aqi}  text-black py-1 px-2.5 rounded-2xl text-center text-sm">${aqilist[data.list[0].main.aqi - 1]}</p>
         </div>
-        <div class="air-indices grid grid-cols-4 items-center ">
+        <div class="air-indices flex flex-col justify-between items-center">
             <i class="fa-solid fa-wind"></i>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">pm2.5</p>
-                <h2 class="mt-3.5 text-3xl">${pm2_5}</h2>
+            <div class="flex flex-row gap-4">
+              <div class="item flex items-center gap-2.5 ">
+                  <p class="text-sm text-center">pm2.5</p>
+                  <h2 class="mt-3.5 text-3xl">${pm2_5}</h2>
+              </div>
+              <div class="item flex items-center gap-2.5 ">
+                  <p class="text-sm text-center">PM10</p>
+                  <h2 class="mt-3.5 text-3xl">${pm10}</h2>
+              </div>
+              <div class="item flex items-center gap-2.5 ">
+                  <p class="text-sm text-center">S02</p>
+                  <h2 class="mt-3.5 text-3xl">${so2}</h2>
+               </div>
             </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">PM10</p>
-                <h2 class="mt-3.5 text-3xl">${pm10}</h2>
+            <div class="flex flex-row gap-4 justify-center items-center">
+                <div class="item flex items-center gap-2.5 ">
+                    <p class="text-sm text-center">co</p>
+                    <h2 class="mt-3.5 text-3xl">${co}</h2>
+                </div>
+                <div class="item flex items-center gap-2.5 ">
+                    <p class="text-sm text-center">no</p>
+                    <h2 class="mt-3.5 text-3xl">${no}</h2>
+                </div>
+                <div class="item flex items-center gap-2.5 ">
+                    <p class="text-sm text-center">no2</p>
+                    <h2 class="mt-3.5 text-3xl">${no2}</h2>
+                </div>
             </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">S02</p>
-                <h2 class="mt-3.5 text-3xl">${so2}</h2>
-            </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">co</p>
-                <h2 class="mt-3.5 text-3xl">${co}</h2>
-            </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">no</p>
-                <h2 class="mt-3.5 text-3xl">${no}</h2>
-            </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">no2</p>
-                <h2 class="mt-3.5 text-3xl">${no2}</h2>
-            </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">nnh3</p>
-                <h2 class="mt-3.5">${nh3}</h2>
-            </div>
-            <div class="item flex items-center gap-2.5 ">
-                <p class="text-sm text-center">o3</p>
-                <h2 class="mt-3.5 text-3xl">${o3}</h2>
+            <div class="flex flex-row gap-4 ">
+                <div class="item flex items-center gap-2.5 ">
+                    <p class="text-sm text-center">nnh3</p>
+                    <h2 class="mt-3.5 text-3xl">${nh3}</h2>
+                </div>
+                <div class="item flex items-center gap-2.5 ">
+                    <p class="text-sm text-center">o3</p>
+                    <h2 class="mt-3.5 text-3xl">${o3}</h2>
+                </div>
             </div>
         </
         `;
@@ -93,9 +100,9 @@ function getWeatherDetails(name, lat, lon, country, state){
         let date = new Date();
         currentWeatherCard.innerHTML = `
         <div class="current-weather">
-                        <div class="details">
+                        <div class="details text-center text-white uppercase text-lg">
                             <p>now</p>
-                            <h2>${(data.main.temp - 273.15).toFixed(2)}&deg;</h2>
+                            <h2 >${(data.main.temp - 273.15).toFixed(2)}&deg;</h2>
                             <p>${data.weather[0].description}</p>
                         </div>
                         <div class="weather-icon">
@@ -103,13 +110,14 @@ function getWeatherDetails(name, lat, lon, country, state){
                         </div>
                     </div>
                     <hr>
-                    <div class="card-footer">
-                        <p><i class="fa-regular fa-calendar"></i>${days[date.getDay()]},${date.getDate()},${months[date.getMonth()]},${date.getFullYear()}</p>
-                        <p><i class="fa-solid fa-location-dot"></i>${name}, ${country}</p>
+                    <div class="card-footer text-white ">
+                        <p class="text-center" ><i class="fa-regular fa-calendar"></i>${days[date.getDay()]},${date.getDate()},${months[date.getMonth()]},${date.getFullYear()}</p>
+                        
+                        <p class="text-center" ><i class="fa-solid fa-location-dot"></i>${name}, ${country}</p>
                     </div>
                 </div>
         `;
-        // let {sunrise, sunset} = data.sys,
+        
         let {timezone, visibility } = data,
         {humidity, pressure, feels_like} = data.main,
         {speed} = data.wind;
@@ -133,11 +141,11 @@ function getWeatherDetails(name, lat, lon, country, state){
         if(hr == 0) hr = 12;
         if(hr > 12) hr = hr - 12;
         hourlyforcastcard.innerHTML += `
-        <div class="card p-4 rounded-2xl m-4 text-center">
-        <p class="text-sm ">${hr}${a}</p>
-        <img src="https://openweathermap.org/img/wn/${hourlyForecast[i].weather[0].icon}.png" alt="">
-        <p class="text-sm ">${(hourlyForecast[i].main.temp - 273.15).toFixed(2)}&deg;c</p>
-    </div>
+            <div class="card p-4 rounded-2xl m-4 text-center">
+                <p class="text-sm ">${hr}${a}</p>
+                <img src="https://openweathermap.org/img/wn/${hourlyForecast[i].weather[0].icon}.png" alt="">
+                <p class="text-sm ">${(hourlyForecast[i].main.temp - 273.15).toFixed(2)}&deg;c</p>
+            </div>
         `;
     }
     let uniqueForecastDays = [];
@@ -151,14 +159,14 @@ function getWeatherDetails(name, lat, lon, country, state){
     for(i=1;i< fiveDayForecast.length; i++){
         let date = new Date(fiveDayForecast[i].dt_txt);
         fiveDaysForecastCard.innerHTML += `
-        <div class="forecast-item grid grid-cols-3 items-center m-4">
-          <div class="icon-wrapper flex items-center">
-            <img src="https://openweathermap.org/img/wn/${fiveDayForecast[i].weather[0].icon}.png"   alt="">
-            <span>${(fiveDayForecast[i].main.temp - 273.15).toFixed(2)}&deg;c</span>
-          </div>
-            <p>--${date.getDate()} ${months[date.getMonth()]}</p>
-            <p>${days[date.getDay()]}</p>
-        </div>
+            <div class="forecast-item grid grid-cols-3 justify-center items-center m-4 text-white ">
+                <div class="icon-wrapper flex items-center justify-center">
+                    <img src="https://openweathermap.org/img/wn/${fiveDayForecast[i].weather[0].icon}.png"   alt="">
+                    <span>${(fiveDayForecast[i].main.temp - 273.15).toFixed(2)}&deg;c</span>
+                </div>
+                <p class="text-center" >--${date.getDate()} ${months[date.getMonth()]}</p>
+                <p class="text-center" >${days[date.getDay()]}</p>
+            </div>
         `;
     }
    }).catch(()=>{
@@ -176,8 +184,9 @@ function getcitycoordinates(){
         getWeatherDetails(name, lat, lon, country, state);
     }).catch(() => {
         alert(`failed to get coordinates of ${cityName}`);
+        cityInput.value='type valid city';
     })
-    
+    addCityToDropdown(cityName);
 }
 
 function getusercoordinates(){
@@ -204,43 +213,64 @@ locationBtn.addEventListener('click',getusercoordinates);
 cityInput.addEventListener('keyup', e => e.key === 'enter' && getcitycoordinates());
 window.addEventListener('load',getusercoordinates);
 
-// function loadCityHistory() {
-//     let cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || [];
-//     let historyDropdown = document.querySelector("#history");
-//     let dropdownContent = <select class="form-select mb-3" onchange="searchCity(this.value)">;
-  
-//     for (let i = 0; i < cityHistory.length; i++) {
-//       const citY = cityHistory[i];
-//       dropdownContent += <option value="${citY}">${citY}</option>;
-//     }
 
-//     dropdownContent += </select>;
-//     historyDropdown.innerHTML = dropdownContent;
-//   }
-  
-//   loadCityHistory();
+document.getElementById('recentCitiesButton').addEventListener('click', () => {
+    const recentCitiesList = document.getElementById('recentCitiesList');
+    recentCitiesList.classList.toggle('hidden');
+});
 
 
+// Hide dropdown 
+document.addEventListener('click', (event) => {
+    const recentCitiesList = document.getElementById('recentCitiesList');
+    const recentCitiesButton = document.getElementById('recentCitiesButton');
+    if (!recentCitiesList.contains(event.target) && !recentCitiesButton.contains(event.target)) {
+        recentCitiesList.classList.add('hidden');
+    }
+});
+// Add city to dropdown
+function addCityToDropdown(city) {
+    const recentCitiesButton = document.getElementById('recentCitiesButton');
+    let cities = JSON.parse(localStorage.getItem('recentCities')) || [];
+    if (!cities.includes(city)) {
+        cities.unshift(city); 
+        if (cities.length > 5) cities.pop(); 
+        localStorage.setItem('recentCities', JSON.stringify(cities));
+    }
+    recentCitiesButton.classList.remove('hidden');
+    renderRecentCities();
+}
 
-//  function loadcitY (){
-//     let citYHistory = JSON.parse(localStorage.getItem("cityHistory")) || [] ;
-//     let dropdown = document.querySelector("select");
-//     for(i=0; i<citYHistory.length;i++){
-//         const inputcity = citYHistory[i];
-//         dropdown.innerHTML += `<option value="${inputcity}">${inputcity}</option>`;
-//     }
 
-     
+// Render recent cities in the dropdown
+function renderRecentCities() {
+    const recentCitiesList = document.getElementById('recentCitiesList');
+    recentCitiesList.innerHTML = '';
+    let cities = JSON.parse(localStorage.getItem('recentCities')) || [];
+    cities.forEach(city => {
+        const cityItem = document.createElement('div');
+        cityItem.className = 'p-2 flex justify-between items-center hover:bg-gray-200';
+        cityItem.innerHTML = `
+            <span class="selectcity cursor-pointer">${city}</span>
+            <button class="remove-city bg-red-500 text-white text-lg px-2 py-1 rounded ml-2">❌</button>
+        `;
+        cityItem.querySelector('.selectcity').addEventListener('click', () => {
+            getcitycoordinates(`${city}`);
+            cityInput.value=`${city}`;
+            recentCitiesList.classList.add('hidden');
+        });
+        cityItem.querySelector('.remove-city').addEventListener('click', (e) => {
+            e.stopPropagation();
+            removeCityFromDropdown(city);
+        });
+        recentCitiesList.appendChild(cityItem);
+    });
+}
 
-//   }
-
-
-
-//   function addCityToDropdown(city) {
-//     const recentCitiesButton = document.getElementById('recentCitiesButton');
-//     let cities = JSON.parse(localStorage.getItem('task')) || [];
-//     if (!cities.includes(city)) {
-//         cities.push(city);
-//         if (cities.length > 5) cities.shift();
-//         localStorage.setItem('recentCities', JSON.stringify(cities));
-//     }
+// Remove city from dropdown
+function removeCityFromDropdown(city) {
+    let cities = JSON.parse(localStorage.getItem('recentCities')) || [];
+    cities = cities.filter(c => c !== city);
+    localStorage.setItem('recentCities', JSON.stringify(cities));
+    renderRecentCities();
+}
